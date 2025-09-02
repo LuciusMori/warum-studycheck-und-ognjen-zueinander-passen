@@ -61,7 +61,7 @@ Ognjen vom Customer Care Team bei StudyCheck`
   return (
     <section className="mb-24">
       <h3 className="text-3xl font-bold text-center text-slate-200 mb-4">
-        Erlebe meinen Ansatz ✨
+        Erlebe meinen Ansatz
       </h3>
       <p className="text-center text-slate-400 max-w-3xl mx-auto mb-12">
         Hier sind zwei konkrete Beispiele, wie ich auf typische Anfragen reagiere. 

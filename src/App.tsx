@@ -24,9 +24,13 @@ function App() {
           Eine persönliche Anmerkung
         </h3>
         <blockquote style={{ textAlign: 'center', fontSize: '1.25rem', fontStyle: 'italic', color: '#cbd5e1', lineHeight: '1.75' }}>
-          „Ich habe Euren Satz gelesen: ‚Wir verlangen kein Anschreiben von dir – da draußen ist schließlich 2025.' [...]
-          Warum also schreibe ich dir trotzdem? Weil mir Transparenz wichtig ist und ich dir gerne eine Seite von mir zeigen möchte,
-          die ein LinkedIn-Profil nicht vermitteln kann: die persönliche und ehrliche."
+          „Ich habe euren Satz gelesen: ‚Wir verlangen kein Anschreiben von dir – da draußen ist schließlich 2025.' [...] <br /><br />
+          
+          Warum mache ich mir also diese Mühe? <br /><br />
+          
+          - Gerade weil da draußen 2025 herrscht und Innovation ein dringend benötigtes Gut ist! <br />
+          - Da, meines Erachtens, Taten (und Werke) deutlich schwerer wiegen als 1000 Sätze! <br />
+          - Da mir Transparenz wichtig ist und ich euch gerne eine Seite von mir zeigen möchte, die ein LinkedIn-Profil nicht vermitteln kann: die persönliche und ehrliche."
         </blockquote>
       </section>
 
@@ -75,7 +79,8 @@ function App() {
               <div>
                 <h4 style={{ fontWeight: '700', fontSize: '1.125rem', color: '#64ffda' }}>Der Kommunikator</h4>
                 <p style={{ color: '#94a3b8' }}>
-                  Empathisch, lösungsorientiert und erfahren im direkten Austausch mit Menschen, um wirklich zu helfen.
+                  Empathisch, lösungsorientiert und erfahren - nicht nur in der Kommunikation mit Maschinen und KI-gestützten Systemen - sondern auch im direkten Austausch mit atmenden und (*mehr oder minder* selbstdenkenden) Menschen, um wirklich zu helfen. <br /><br />
+                  * Ein wenig Gesellschaftskritik muss sein! *Grins
                 </p>
               </div>
             </div>
@@ -99,11 +104,11 @@ function App() {
       {/* Experience Demo */}
       <section style={{ marginBottom: '6rem' }}>
         <h3 style={{ fontSize: '2rem', fontWeight: '700', textAlign: 'center', color: '#e2e8f0', marginBottom: '1rem' }}>
-          Erlebe meinen Ansatz ✨
+          Erlebt meinen Ansatz
         </h3>
         <p style={{ textAlign: 'center', color: '#94a3b8', maxWidth: '48rem', margin: '0 auto 3rem' }}>
-          Hier sind konkrete Beispiele, wie ich auf typische Anfragen reagiere.
-          Darunter kannst du meinen Ansatz dann live mit einer eigenen Frage im Chat-Simulator testen.
+          Damit ihr euch ein Bild meiner Kommunikationsgewohnheiten machen könnt, habe ich euch nachfolgend drei konkrete Beispiele erstellt, wie ich auf typische Anfragen reagiere.
+          Darunter kannst du / könnt ihr meinen Ansatz dann live mit einer eigenen Frage im Chat-Simulator testen.
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginBottom: '3rem', maxWidth: '48rem', margin: '0 auto 3rem' }}>
@@ -124,11 +129,11 @@ Im Kern ist StudyCheck deine "zentrale und transparente Informationsquelle" für
 
 Der Prozess ist dabei denkbar einfach und darauf ausgelegt, dir maximalen Mehrwert zu bieten:
 
-1. **"Suchen & Finden":** Mit unseren intuitiven Filtern findest du mühelos Studiengänge, die exakt zu deinen Vorstellungen passen.
+1. "Suchen & Finden": Mit unseren intuitiven Filtern findest du mühelos Studiengänge, die exakt zu deinen Vorstellungen passen.
 
-2. **"Vergleichen":** Du kannst Studiengänge und Hochschulen direkt miteinander abgleichen.
+2. "Vergleichen": Du kannst Studiengänge und Hochschulen direkt miteinander abgleichen.
 
-3. **"Informieren (Das Herzstück!)":** Hier kommen die authentischen Erfahrungsberichte von Tausenden Studierenden ins Spiel.
+3. "Informieren (Das Herzstück!)": Hier kommen die authentischen Erfahrungsberichte von Tausenden Studierenden ins Spiel.
 
 Kurz gesagt: StudyCheck macht deine Studienwahl einfacher, transparenter und sicherer, damit du voller Zuversicht in deine akademische Zukunft starten kannst.
 
