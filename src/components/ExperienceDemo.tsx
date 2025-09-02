@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import ChatSimulator from './ChatSimulator'
 
 export default function ExperienceDemo() {
