@@ -1,7 +1,9 @@
+import ChatSimulator from './components/ChatSimulator'
+
 function App() {
   return (
     <div style={{ minHeight: '100vh', maxWidth: '1200px', margin: '0 auto', padding: '1rem 2rem' }}>
-      
+
       {/* Header */}
       <header style={{ textAlign: 'center', padding: '4rem 0 6rem' }}>
         <h1 className="gradient-text" style={{ fontSize: '4rem', fontWeight: '800', marginBottom: '1rem' }}>
@@ -21,8 +23,8 @@ function App() {
           Eine persönliche Anmerkung
         </h3>
         <blockquote style={{ textAlign: 'center', fontSize: '1.25rem', fontStyle: 'italic', color: '#cbd5e1', lineHeight: '1.75' }}>
-          „Ich habe Euren Satz gelesen: ‚Wir verlangen kein Anschreiben von dir – da draußen ist schließlich 2025.' [...] 
-          Warum also schreibe ich dir trotzdem? Weil mir Transparenz wichtig ist und ich dir gerne eine Seite von mir zeigen möchte, 
+          „Ich habe Euren Satz gelesen: ‚Wir verlangen kein Anschreiben von dir – da draußen ist schließlich 2025.' [...]
+          Warum also schreibe ich dir trotzdem? Weil mir Transparenz wichtig ist und ich dir gerne eine Seite von mir zeigen möchte,
           die ein LinkedIn-Profil nicht vermitteln kann: die persönliche und ehrliche."
         </blockquote>
       </section>
@@ -58,7 +60,7 @@ function App() {
             Der Kern: Zwei Welten, ein Profil
           </h3>
           <p style={{ color: '#94a3b8', marginBottom: '1rem' }}>
-            Ich bewerbe mich bewusst außerhalb der reinen IT, weil ich die Balance suche und liebe. 
+            Ich bewerbe mich bewusst außerhalb der reinen IT, weil ich die Balance suche und liebe.
             Ich verbinde das Beste aus zwei Welten, um Probleme ganzheitlich zu lösen.
           </p>
           <div style={{ marginTop: '1.5rem' }}>
@@ -94,7 +96,7 @@ function App() {
           Anforderungs-Analyse: Ein Volltreffer
         </h3>
         <p style={{ textAlign: 'center', color: '#94a3b8', maxWidth: '32rem', margin: '0 auto 2.5rem' }}>
-          Eure Ausschreibung sagt: „Die Stelle passt perfekt zu dir, wenn…" – ich habe bei jedem Punkt innerlich genickt. 
+          Eure Ausschreibung sagt: „Die Stelle passt perfekt zu dir, wenn…" – ich habe bei jedem Punkt innerlich genickt.
           Hier die visuelle Bestätigung.
         </p>
         <div style={{ padding: '2rem', borderRadius: '0.5rem', backgroundColor: '#112240' }}>
@@ -107,7 +109,7 @@ function App() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {[
                 "Strukturiert & Verantwortungsbewusst",
-                "Exzellente Kommunikation", 
+                "Exzellente Kommunikation",
                 "Feedback als Chance sehen",
                 "Mitdenken & wirklich helfen",
                 "Prozesse hinterfragen & verbessern"
@@ -137,10 +139,10 @@ function App() {
           Erlebe meinen Ansatz ✨
         </h3>
         <p style={{ textAlign: 'center', color: '#94a3b8', maxWidth: '48rem', margin: '0 auto 3rem' }}>
-          Hier sind konkrete Beispiele, wie ich auf typische Anfragen reagiere. 
+          Hier sind konkrete Beispiele, wie ich auf typische Anfragen reagiere.
           Darunter kannst du meinen Ansatz dann live mit einer eigenen Frage im Chat-Simulator testen.
         </p>
-        
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginBottom: '3rem', maxWidth: '48rem', margin: '0 auto 3rem' }}>
           {/* Example 1 */}
           <div style={{ padding: '1.5rem', borderRadius: '0.5rem', backgroundColor: '#112240' }}>
@@ -196,30 +198,39 @@ Ognjen vom Customer Care Team bei StudyCheck"`}
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Chat Simulator */}
-        <div style={{ padding: '2rem', borderRadius: '0.5rem', backgroundColor: '#112240', maxWidth: '48rem', margin: '0 auto' }}>
-          <div style={{ height: '20rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', overflowY: 'auto', padding: '1rem', backgroundColor: '#0a192f', borderRadius: '0.5rem', marginBottom: '1rem', border: '1px solid #475569' }}>
-            <div style={{ maxWidth: '80%', padding: '0.75rem 1.125rem', borderRadius: '1.25rem', marginBottom: '0.5rem', lineHeight: '1.5', backgroundColor: '#1e293b', color: '#cbd5e1', alignSelf: 'flex-start', borderBottomLeftRadius: '0.25rem' }}>
-              Hallo! Ich bin Ognjens digitaler Assistent. Stell mir gerne eine Beispielfrage, die ein Kunde von StudyCheck haben könnte.
+          {/* Example 3 */}
+          <div style={{ padding: '1.5rem', borderRadius: '0.5rem', backgroundColor: '#112240' }}>
+            <div style={{ marginBottom: '1rem' }}>
+              <p style={{ fontWeight: '600', color: '#94a3b8' }}>Studierender:</p>
+              <blockquote style={{ fontStyle: 'italic', color: '#cbd5e1', borderLeft: '2px solid #64ffda', paddingLeft: '1rem', marginTop: '0.5rem' }}>
+                "Ich finde StudyCheck überhaupt nicht interessant. Insbesondere aktuell - angesichts aller KI-Helfer und LLMs - kann ich mir kurzerhand eine Zusammenfassung aller für mich infrage kommender Unis erstellen lassen. Wozu der Workaround über StudyCheck?"
+              </blockquote>
+            </div>
+            <div>
+              <p style={{ fontWeight: '600', color: '#64ffda' }}>Meine Antwort:</p>
+              <div style={{ color: '#cbd5e1', marginTop: '0.5rem', paddingLeft: '1rem', whiteSpace: 'pre-line' }}>
+                {`"Hallo! Deine Überlegung kann ich gut nachvollziehen; KI-Helfer sind wirklich geniale Tools und nehmen einem viel Arbeit ab, um schnell erste Infos zu sammeln.
+
+Du fragst dich also: Wozu dann noch StudyCheck?
+
+Stell es dir so vor: Eine KI kann dir eine Zusammenfassung von *Fakten* und öffentlich zugänglichen Informationen liefern. StudyCheck geht einen entscheidenden Schritt weiter und liefert dir nicht nur die nackten Fakten, sondern vor allem die *authentische Perspektive* von Studierenden, die aktuell oder kürzlich an den Unis waren. Wir sammeln und moderieren echte Erfahrungsberichte, die dir Einblicke in den Alltag geben, die keine KI (authentisch) generieren kann. Das sind Bewertungen zur Qualität der Lehre im Alltag (die echte Menschen hautnah erlebt haben), zum Campusleben (aus eigener Sicht der Studierenden), zur Unterstützung durch Dozenten, zur Mensa und vielem mehr – Kriterien, die nur Studierende wirklich beurteilen können.
+
+Diese individuellen, menschlichen Einblicke sind es, die deine Wahl wirklich fundiert machen und dir ein Gefühl dafür geben, ob eine Uni wirklich zu dir passt, nicht nur auf dem Papier. Sieh StudyCheck also nicht als "Workaround", sondern als die entscheidende Brücke zwischen den objektiven Infos, die dir KI liefert, und der subjektiven Realität, die du als Studierender erleben wirst.
+
+Es ist die menschliche Komponente, die das Bild komplett macht und dir hilft, die perfekte Wahl zu treffen.
+
+Ich hoffe, das macht unseren Mehrwert etwas klarer. Schau dich doch mal um und filtere nach Dingen, die dir am Herzen liegen – vielleicht entdeckst du ja die Besonderheiten, die dich bei deiner Entscheidung wirklich weiterbringen.
+
+Wenn du noch Fragen hast, melde dich gerne!
+Herzliche Grüße,
+Ognjen vom Customer Care Team bei StudyCheck"`}
+              </div>
             </div>
           </div>
-          
-          <form style={{ display: 'flex', gap: '1rem' }}>
-            <input 
-              type="text" 
-              placeholder="...oder teste mich mit deiner eigenen Frage." 
-              style={{ flexGrow: 1, padding: '0.75rem', backgroundColor: '#475569', color: '#cbd5e1', border: '1px solid #475569', borderRadius: '0.5rem', outline: 'none' }}
-            />
-            <button 
-              type="submit" 
-              style={{ backgroundColor: '#64ffda', color: '#0a192f', fontWeight: '700', padding: '0.75rem 1.5rem', borderRadius: '0.5rem', border: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
-            >
-              Senden
-            </button>
-          </form>
         </div>
+
+        <ChatSimulator />
       </section>
 
       {/* Footer */}

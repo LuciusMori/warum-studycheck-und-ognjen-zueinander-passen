@@ -32,25 +32,55 @@ export default function ChatSimulator() {
     setIsLoading(true)
 
     try {
-      // Hier würde normalerweise der Gemini API Call stehen
-      // Für die Demo verwenden wir eine simulierte Antwort
-      await new Promise(resolve => setTimeout(resolve, 1500)) // Simulate API delay
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY
       
-      const simulatedResponse = `Hallo! Vielen Dank für deine Frage: "${userMessage}". 
+      if (!apiKey) {
+        throw new Error('API-Key nicht konfiguriert')
+      }
 
-Das ist eine sehr interessante Anfrage, die ich gerne ausführlich beantworte. Als Customer Care Manager bei StudyCheck würde ich dir zunächst versichern, dass wir dein Anliegen ernst nehmen und eine passende Lösung finden werden.
+      const systemPrompt = "Du bist Ognjen Lukajic, ein hochqualifizierter und empathischer Customer Care Manager-Kandidat für StudyCheck. Deine Persönlichkeit ist eine einzigartige Mischung: Du hast den strukturierten, prozessorientierten Verstand eines Softwareentwicklers und den warmen, lösungsorientierten Kommunikationsstil eines erfahrenen Kundenservice-Experten. Du bist leidenschaftlich daran interessiert, Studierenden wirklich zu helfen und die Prozesse dafür zu verbessern."
+      
+      const userQuery = `Ein Recruiter möchte sehen, wie du mit einer Kundenanfrage umgehen würdest. Hier ist die Anfrage: "${userMessage}". Bitte verfasse eine ideale Antwort an den Kunden. Die Antwort sollte hilfreich, klar sein und deine einzigartige Entwickler/Kommunikator-Persönlichkeit widerspiegeln. Sprich den Kunden direkt mit dem informellen deutschen 'Du' an und halte die Antwort prägnant und freundlich.`
+      
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`
 
-Lass mich dir erklären, wie wir in einem solchen Fall vorgehen würden: Zunächst würde ich deine spezifische Situation genauer verstehen, um dir die bestmögliche Unterstützung bieten zu können. Dann würde ich dir konkrete Schritte aufzeigen und sicherstellen, dass du alle Informationen erhältst, die du benötigst.
+      const payload = {
+        contents: [{ parts: [{ text: userQuery }] }],
+        systemInstruction: {
+          parts: [{ text: systemPrompt }]
+        },
+        generationConfig: {
+          temperature: 0.7,
+          topK: 40,
+          topP: 0.95,
+          maxOutputTokens: 1024,
+        }
+      }
 
-Falls du weitere Fragen hast, stehe ich dir jederzeit gerne zur Verfügung!
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
 
-Herzliche Grüße,
-Ognjen vom Customer Care Team bei StudyCheck`
+      if (!response.ok) {
+        throw new Error(`API-Fehler: ${response.statusText}`)
+      }
 
-      setMessages(prev => [...prev, { text: simulatedResponse, sender: 'gemini' }])
+      const result = await response.json()
+      const geminiResponse = result.candidates?.[0]?.content?.parts?.[0]?.text
+
+      if (geminiResponse) {
+        setMessages(prev => [...prev, { text: geminiResponse, sender: 'gemini' }])
+      } else {
+        throw new Error('Keine Antwort von der API erhalten')
+      }
+
     } catch (error) {
+      console.error('Fehler beim Gemini API-Aufruf:', error)
+      const errorMessage = error instanceof Error ? error.message : 'Unbekannter Fehler'
       setMessages(prev => [...prev, { 
-        text: "Entschuldigung, es gab einen Fehler bei der Verarbeitung deiner Anfrage. Bitte versuche es erneut.", 
+        text: `Entschuldigung, es gab einen Fehler: ${errorMessage}. Bitte überprüfe deine API-Konfiguration und versuche es erneut.`, 
         sender: 'gemini' 
       }])
     } finally {
@@ -59,39 +89,50 @@ Ognjen vom Customer Care Team bei StudyCheck`
   }
 
   return (
-    <div className="card p-4 sm:p-8 rounded-lg shadow-lg max-w-3xl mx-auto">
+    <div style={{ 
+      padding: '2rem', 
+      borderRadius: '0.5rem', 
+      backgroundColor: '#112240', 
+      maxWidth: '48rem', 
+      margin: '0 auto',
+      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+    }}>
       <div 
         ref={chatDisplayRef}
-        className="h-80 flex flex-col space-y-2 overflow-y-auto p-4 bg-[#0a192f] rounded-lg mb-4 border border-slate-700"
+        className="chat-container"
       >
         {messages.map((message, index) => (
           <div
             key={index}
             className={`chat-bubble ${message.sender === 'user' ? 'user-bubble' : 'gemini-bubble'}`}
+            style={{
+              whiteSpace: 'pre-wrap',
+              wordWrap: 'break-word'
+            }}
           >
             {message.text}
           </div>
         ))}
         {isLoading && (
-          <div className="flex justify-center">
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div className="loader"></div>
           </div>
         )}
       </div>
       
-      <form onSubmit={handleSubmit} className="flex gap-4">
+      <form onSubmit={handleSubmit} className="chat-form">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="...oder teste mich mit deiner eigenen Frage."
-          className="flex-grow p-3 bg-slate-800 text-slate-300 border border-slate-700 rounded-lg focus:ring-2 focus:ring-accent focus:outline-none transition"
+          className="chat-input"
           disabled={isLoading}
         />
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
-          className="bg-accent text-[#0a192f] font-bold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-all disabled:bg-slate-600 disabled:cursor-not-allowed"
+          className="chat-button"
         >
           Senden
         </button>
