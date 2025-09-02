@@ -202,10 +202,10 @@ Ognjen vom Customer Care Team bei StudyCheck"`}
           Ich bin überzeugt, dass ich mit meiner Erfahrung und meinem analytischen Blick einen wertvollen Beitrag leisten kann.
         </p>
         <p style={{ marginTop: '0.5rem', fontWeight: '600', color: '#e2e8f0' }}>
-          Ich freue mich auf ein persönliches Kennenlernen!
+        Auf ein persönliches Kennenlernen freue ich mich sehr!
         </p>
         <p style={{ marginTop: '2rem', fontSize: '0.875rem', color: '#64748b' }}>
-          &copy; 2025 Ognjen Lukajic | Erstellt für StudyCheck
+          2025 Ognjen Lukajic | Erstellt für StudyCheck
         </p>
       </footer>
     </div>

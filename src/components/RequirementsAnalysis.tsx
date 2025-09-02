@@ -36,25 +36,29 @@ export default function RequirementsAnalysis() {
       </h3>
       <p style={{ textAlign: 'center', color: '#94a3b8', maxWidth: '32rem', margin: '0 auto 2.5rem' }}>
         Eure Ausschreibung sagt: „Die Stelle passt perfekt zu dir, wenn…" – ich habe bei jedem Punkt innerlich genickt.
-        Hier die visuelle Bestätigung.
+        Hier die visuelle Bestätigung:
       </p>
       <div style={{ padding: '2rem', borderRadius: '0.5rem', backgroundColor: '#112240' }}>
         <div style={{ maxWidth: '32rem', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '8rem', height: '8rem', borderRadius: '50%', backgroundColor: 'rgba(100, 255, 218, 0.2)', border: '4px solid #64ffda', marginBottom: '1rem' }}>
+            {/* <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '8rem', height: '8rem', borderRadius: '50%', backgroundColor: 'rgba(100, 255, 218, 0.2)', border: '4px solid #64ffda', marginBottom: '1rem' }}>
               <span style={{ fontSize: '2.5rem', fontWeight: '700', color: '#64ffda' }}>ICH</span>
-            </div>
+            </div> */}
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {requirements.map((req, index) => (
-              <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem', backgroundColor: '#0a192f', borderRadius: '0.5rem', border: '1px solid #475569' }}>
-                <span style={{ color: '#cbd5e1', fontWeight: '500' }}>{req}</span>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div key={index} style={{ padding: '1rem', backgroundColor: '#0a192f', borderRadius: '0.5rem', border: '1px solid #475569' }}>
+                {/* Titel */}
+                <div style={{ marginBottom: '1rem' }}>
+                  <span style={{ color: '#cbd5e1', fontWeight: '500', fontSize: '1rem' }}>{req}</span>
+                </div>
+                
+                {/* Progress Bar - volle Breite */}
+                <div style={{ width: '100%' }}>
                   <div
                     style={{
-                      width: '8rem',
+                      width: '100%',
                       backgroundColor: '#475569',
                       borderRadius: '9999px',
                       height: '0.75rem',
@@ -72,18 +76,23 @@ export default function RequirementsAnalysis() {
                       }}
                     />
                   </div>
-                  <span
-                    style={{
-                      color: '#64ffda',
-                      fontWeight: '700',
-                      fontSize: '0.875rem',
-                      transition: `all 500ms ease-out ${1200 + index * 300}ms`,
-                      opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? 'scale(1)' : 'scale(0.8)'
-                    }}
-                  >
-                    100%
-                  </span>
+                  
+                  {/* Percentage Labels */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
+                    <span style={{ color: '#64748b', fontSize: '0.875rem' }}>0%</span>
+                    <span
+                      style={{
+                        color: '#64ffda',
+                        fontWeight: '700',
+                        fontSize: '0.875rem',
+                        transition: `all 500ms ease-out ${1200 + index * 300}ms`,
+                        opacity: isVisible ? 1 : 0,
+                        transform: isVisible ? 'scale(1)' : 'scale(0.8)'
+                      }}
+                    >
+                      100%
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -100,9 +109,6 @@ export default function RequirementsAnalysis() {
           >
             <p style={{ color: '#64ffda', fontWeight: '700', fontSize: '1.25rem' }}>
               Perfekte Übereinstimmung!
-            </p>
-            <p style={{ color: '#94a3b8', marginTop: '0.5rem' }}>
-              Alle Anforderungen werden voll erfüllt
             </p>
           </div>
         </div>
