@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bewerbungs-Infografik | Ognjen Lukajic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Deep Blue & Cyan (Dark Mode) -->
+    <!-- Narrative Structure Plan: The infographic follows a compelling narrative designed for a recruiter. 1. **Hook**: Start with the personal note about the unsolicited cover letter to create immediate engagement. 2. **Value Alignment**: Immediately show why StudyCheck is a perfect fit with three key benefit cards, demonstrating research and shared values. 3. **Unique Selling Proposition**: Introduce the core concept of the 'Developer-Communicator' with a side-by-side comparison to clarify this unique background. 4. **Data-Driven Proof**: Visualize the alignment with job requirements using a Radar Chart, turning a bullet point list into a memorable data point. 5. **Live Demo**: A new Gemini-powered chat simulation allows the recruiter to interactively test the candidate's communication style. 6. **Core Skills**: Present key skills like experience and process optimization as large, impactful numbers. This structure tells a story from 'Why you?' to 'Why me?' to 'Here's the proof'. -->
+    <!-- Visualization & Content Choices: 1. **Personal Note**: Goal: Inform -> Method: Styled quote block (HTML/Tailwind) -> Justification: Creates a strong, personal opening. 2. **Why StudyCheck**: Goal: Compare -> Method: Three interactive cards (HTML/Tailwind) -> Justification: Quickly visualizes the alignment of candidate needs and company benefits. 3. **Developer-Communicator**: Goal: Organize -> Method: Two-column layout -> Justification: Clearly explains the dual-skillset USP. 4. **Fit Analysis**: Goal: Compare -> Method: Radar Chart (Chart.js/Canvas) -> Justification: Visually confirms a 100% match with all stated requirements. 5. **Key Metrics**: Goal: Inform -> Method: Large number callouts (HTML/Tailwind) -> Justification: Conveys key stats in a highly scannable format. 6. **Gemini Chat Simulation**: Goal: Demonstrate -> Method: Interactive chat UI powered by Gemini API -> Justification: Provides a live, engaging demonstration of the candidate's problem-solving and communication skills, which is far more impactful than just claiming them. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f; /* Deep Dark Blue */
+            color: #ccd6f6; /* Light Slate for text */
+        }
+        .text-accent {
+            color: #64ffda; /* Bright Cyan */
+        }
+        .bg-accent {
+             background-color: #64ffda;
+        }
+        .border-accent {
+            border-color: #64ffda;
+        }
+        .card {
+            background-color: #112240; /* Lighter Navy */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .chat-bubble {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .user-bubble {
+            background-color: #2563eb; /* A brighter blue for user */
+            color: #ffffff;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+        .gemini-bubble {
+            background-color: #1e293b; /* Slate */
+            color: #cbd5e1;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        .loader {
+            border: 4px solid #112240;
+            border-top: 4px solid #64ffda;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #64ffda, #ccd6f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="max-w-5xl mx-auto p-4 sm:p-8">
+
+        <header class="text-center py-16 sm:py-24">
+            <h1 class="text-5xl md:text-7xl font-extrabold gradient-text mb-4">Ognjen Lukajic</h1>
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-300">Bewerbung: Customer Care Manager</h2>
+            <p class="mt-6 text-lg text-slate-400 max-w-3xl mx-auto">Eine interaktive Infografik über meine Motivation, meine Fähigkeiten und warum ich perfekt zu StudyCheck passe.</p>
+        </header>
+
+        <section class="mb-24 card p-8 rounded-lg shadow-lg border-t-2 border-accent">
+            <h3 class="text-2xl font-bold text-center text-slate-200 mb-6">Eine persönliche Anmerkung</h3>
+            <blockquote class="text-center">
+                <p class="text-xl italic text-slate-300 leading-relaxed">„Ich habe Euren Satz gelesen: ‚Wir verlangen kein Anschreiben von dir – da draußen ist schließlich 2025.‘ [...] Warum also schreibe ich dir trotzdem? Weil mir Transparenz wichtig ist und ich dir gerne eine Seite von mir zeigen möchte, die ein LinkedIn-Profil nicht vermitteln kann: die persönliche und ehrliche.“</p>
+            </blockquote>
+        </section>
+
+        <section class="mb-24">
+            <h3 class="text-3xl font-bold text-center text-slate-200 mb-12">Das perfekte Match: Warum StudyCheck?</h3>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="card p-8 rounded-lg shadow-lg">
+                    <div class="text-5xl mb-4 text-accent">🚀</div>
+                    <h4 class="text-xl font-bold mb-2 text-slate-200">Remote First</h4>
+                    <p class="text-slate-400">Ermöglicht mir, mein Engagement und meine Lernbereitschaft fokussiert und ortsunabhängig einzubringen.</p>
+                </div>
+                <div class="card p-8 rounded-lg shadow-lg">
+                    <div class="text-5xl mb-4 text-accent">🕒</div>
+                    <h4 class="text-xl font-bold mb-2 text-slate-200">Flexible Arbeitszeiten</h4>
+                    <p class="text-slate-400">Der ideale Rahmen, um mein Fernstudium und berufliches Engagement optimal zu vereinen.</p>
+                </div>
+                <div class="card p-8 rounded-lg shadow-lg">
+                    <div class="text-5xl mb-4 text-accent">🎓</div>
+                    <h4 class="text-xl font-bold mb-2 text-slate-200">Weiterbildung deluxe</h4>
+                    <p class="text-slate-400">Zeigt mir, dass wir dieselben Werte teilen: Lebenslanges Lernen ist für mich gelebte Praxis.</p>
+                </div>
+            </div>
+        </section>
+
+         <section class="mb-24 grid md:grid-cols-5 gap-8 items-center card p-8 rounded-lg shadow-lg">
+            <div class="md:col-span-3 md:pr-8">
+                <h3 class="text-3xl font-bold text-slate-200 mb-4">Der Kern: Zwei Welten, ein Profil</h3>
+                <p class="text-slate-400 mb-4">Ich bewerbe mich bewusst außerhalb der reinen IT, weil ich die Balance suche und liebe. Ich verbinde das Beste aus zwei Welten, um Probleme ganzheitlich zu lösen.</p>
+                <div class="mt-6 space-y-4">
+                    <div>
+                        <h4 class="font-bold text-lg text-accent">Der Entwickler</h4>
+                        <p class="text-slate-400">Analytisch, strukturiert und leidenschaftlich darin, Prozesse zu hinterfragen und smarter zu gestalten.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg text-accent">Der Kommunikator</h4>
+                        <p class="text-slate-400">Empathisch, lösungsorientiert und erfahren im direkten Austausch mit Menschen, um wirklich zu helfen.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-2 grid grid-cols-1 gap-6 text-center">
+                 <div class="bg-[#0a192f] p-6 rounded-lg border border-slate-700">
+                    <span class="text-6xl font-extrabold text-accent">15</span>
+                    <p class="font-semibold text-slate-300 mt-2">Jahre Erfahrung im Kundendienst</p>
+                </div>
+                <div class="bg-[#0a192f] p-6 rounded-lg border border-slate-700">
+                     <span class="text-6xl font-extrabold text-accent">100%</span>
+                    <p class="font-semibold text-slate-300 mt-2">Leidenschaft für Prozessoptimierung</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mb-24">
+            <h3 class="text-3xl font-bold text-center text-slate-200 mb-4">Anforderungs-Analyse: Ein Volltreffer</h3>
+            <p class="text-center text-slate-400 max-w-2xl mx-auto mb-10">Eure Ausschreibung sagt: „Die Stelle passt perfekt zu dir, wenn…“ – ich habe bei jedem Punkt innerlich genickt. Hier die visuelle Bestätigung.</p>
+            <div class="card p-4 sm:p-8 rounded-lg shadow-lg">
+                <div class="chart-container">
+                    <canvas id="kompetenzenChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-24">
+            <h3 class="text-3xl font-bold text-center text-slate-200 mb-4">Erlebe meinen Ansatz ✨</h3>
+            <p class="text-center text-slate-400 max-w-3xl mx-auto mb-12">Hier sind zwei konkrete Beispiele, wie ich auf typische Anfragen reagiere. Darunter kannst du meinen Ansatz dann live mit einer eigenen Frage im Chat-Simulator testen.</p>
+            
+            <div class="space-y-8 mb-12 max-w-3xl mx-auto">
+                <!-- Example 1 -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="mb-4">
+                        <p class="font-semibold text-slate-400">Studierender:</p>
+                        <blockquote class="italic text-slate-300 border-l-2 border-accent pl-4 mt-2">
+                            “Wie genau funktioniert die Plattform und warum sollte ich sie überhaupt nutzen?”
+                        </blockquote>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-accent">Meine Antwort:</p>
+                        <div class="text-slate-300 space-y-4 mt-2 pl-4">
+                            <p>“Hallo! Das ist eine super Frage, die viele Studierende am Anfang haben – und ich erkläre dir sehr gerne, wie StudyCheck funktioniert und warum es sich für dich lohnt.</p>
+                            <p>Im Kern ist StudyCheck deine “zentrale und transparente Informationsquelle” für die Studienwahl. Stell dir vor, du hast Zugriff auf eine riesige, ständig aktualisierte Datenbank von Hochschulen und Studiengängen in Deutschland, angereichert mit dem wertvollsten Input überhaupt: den Erfahrungen echter Studierender.</p>
+                            <p>Der Prozess ist dabei denkbar einfach und darauf ausgelegt, dir maximalen Mehrwert zu bieten:</p>
+                            <ol class="list-decimal list-inside space-y-2 pl-2">
+                                <li><strong>“Suchen & Finden”:</strong> Mit unseren intuitiven Filtern (Fachbereich, Ort, Abschlussart und viele mehr) findest du mühelos Studiengänge, die exakt zu deinen Vorstellungen passen. Es ist wie eine spezialisierte Suchmaschine, die dir hilft, aus der Masse das Richtige herauszufiltern.</li>
+                                <li><strong>“Vergleichen”:</strong> Du kannst Studiengänge und Hochschulen direkt miteinander abgleichen, um Gemeinsamkeiten und Unterschiede auf einen Blick zu erkennen. Das hilft, Optionen schnell zu bewerten.</li>
+                                <li><strong>“Informieren (Das Herzstück!)”:</strong> Hier kommen die “authentischen Erfahrungsberichte” von Tausenden aktuellen und ehemaligen Studierenden ins Spiel. Du liest ehrliche und detaillierte Bewertungen zu Lehrqualität, Campusleben, Ausstattung, Digitalisierung, Organisation und den Karrierechancen. Das sind Informationen aus erster Hand, die du sonst nirgends in dieser Form findest.</li>
+                            </ol>
+                            <p class="pt-2">- Und warum solltest du unsere Plattform nutzen?</p>
+                            <p>Ganz einfach: Die Studienwahl ist eine der wichtigsten Entscheidungen im Leben, und wir möchten dir dabei helfen, diese fundiert und ohne böse Überraschungen zu treffen. Du sparst wertvolle Zeit bei der Recherche, da alle wichtigen Informationen gebündelt sind. Du erhältst eine unvergleichliche Transparenz durch ehrliche Meinungen, die dir einen realen Blick hinter die Kulissen ermöglichen. Du kannst eine sichere und passende Entscheidung treffen, basierend auf den kollektiven Erfahrungen tausender anderer Studierender.</p>
+                            <p>Kurz gesagt: StudyCheck macht deine Studienwahl einfacher, transparenter und sicherer, damit du voller Zuversicht in deine akademische Zukunft starten kannst. Am besten probierst du es gleich selbst aus! Solltest du konkrete Fragen haben oder Hilfe bei der Suche benötigen, bin ich jederzeit gerne für dich da.</p>
+                            <p>Herzliche Grüße,<br>Ognjen vom Customer Care Team bei StudyCheck”</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Example 2 -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="mb-4">
+                        <p class="font-semibold text-slate-400">Studierender:</p>
+                        <blockquote class="italic text-slate-300 border-l-2 border-accent pl-4 mt-2">
+                            “Ich habe einige schlechte Dinge bei Kununu über euch gelesen. Nun bin ich mir unsicher, ob ich mich überhaupt anmelden sollte.”
+                        </blockquote>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-accent">Meine Antwort:</p>
+                         <div class="text-slate-300 space-y-4 mt-2 pl-4">
+                            <p>“Hallo. Ich verstehe deine Bedenken sehr gut, wenn du auf externen Plattformen wie Kununu negative Bewertungen liest. Solche Meinungen nehmen wir natürlich ernst und nutzen sie als wichtiges Feedback, um uns kontinuierlich zu verbessern – ein Prozess, der uns als Plattform immer weiterentwickelt.</p>
+                            <p>Was uns bei StudyCheck aber besonders wichtig ist, ist die Authentizität und Verlässlichkeit der Erfahrungsberichte direkt von Studierenden. Wir haben dafür sorgfältige Moderationsprozesse etabliert, um sicherzustellen, dass du bei uns transparente und hilfreiche Einblicke erhältst, die dir wirklich bei deiner Studienwahl helfen. Am besten machst du dir dein eigenes, unverbindliches Bild auf StudyCheck.</p>
+                            <p>Registriere dich gerne und entdecke, wie viele positive Rückmeldungen unsere Nutzer selbst teilen und wie wir dir mit strukturierten Informationen und echten Erfahrungen zur Seite stehen.</p>
+                            <p>Bei weiteren Fragen stehe ich dir jederzeit persönlich zur Verfügung!<br>Herzliche Grüße,<br>Ognjen vom Customer Care Team bei StudyCheck”</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 3 -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="mb-4">
+                        <p class="font-semibold text-slate-400">Studierender:</p>
+                        <blockquote class="italic text-slate-300 border-l-2 border-accent pl-4 mt-2">
+                            “Ich finde StudyCheck überhaupt nicht interessant. Insbesondere aktuell - angesichts aller KI-Helfer und LLMs - kann ich mir kurzerhand eine Zusammenfassung aller für mich infrage kommender Unis erstellen lassen. Wozu der Workaround über StudyCheck?”.
+                        </blockquote>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-accent">Meine Antwort:</p>
+                         <div class="text-slate-300 space-y-4 mt-2 pl-4">
+                            <p>“Hallo! Deine Überlegung kann ich gut nachvollziehen; KI-Helfer sind wirklich geniale Tools und nehmen einem viel Arbeit ab, um schnell erste Infos zu sammeln. </p>
+                            <p>Du fragst dich also: Wozu dann noch StudyCheck?</p>
+                            <p>Stell es dir so vor: Eine KI kann dir eine Zusammenfassung von *Fakten* und öffentlich zugänglichen Informationen liefern. StudyCheck geht einen entscheidenden Schritt weiter und liefert dir nicht nur die nackten Fakten, sondern vor allem die *authentische Perspektive* von Studierenden, die aktuell oder kürzlich an den Unis waren. Wir sammeln und moderieren echte Erfahrungsberichte, die dir Einblicke in den Alltag geben, die keine KI (authentisch) generieren kann. Das sind Bewertungen zur Qualität der Lehre im Alltag (die echte Menschen hautnah erlebt haben), zum Campusleben (aus eigener Sicht der Studierenden), zur Unterstützung durch Dozenten, zur Mensa und vielem mehr – Kriterien, die nur Studierende wirklich beurteilen können.</p>
+                            <p>Diese individuellen, menschlichen Einblicke sind es, die deine Wahl wirklich fundiert machen und dir ein Gefühl dafür geben, ob eine Uni wirklich zu dir passt, nicht nur auf dem Papier. Sieh StudyCheck also nicht als "Workaround", sondern als die entscheidende Brücke zwischen den objektiven Infos, die dir KI liefert, und der subjektiven Realität, die du als Studierender erleben wirst.</p>
+                            <p>Es ist die menschliche Komponente, die das Bild komplett macht und dir hilft, die perfekte Wahl zu treffen.</p>
+                            <p>Ich hoffe, das macht unseren Mehrwert etwas klarer. Schau dich doch mal um und filtere nach Dingen, die dir am Herzen liegen – vielleicht entdeckst du ja die Besonderheiten, die dich bei deiner Entscheidung wirklich weiterbringen.</p>
+                            <p>Wenn du noch Fragen hast, melde dich gerne!<br>Herzliche Grüße,<br>Ognjen vom Customer Care Team bei StudyCheck”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-4 sm:p-8 rounded-lg shadow-lg max-w-3xl mx-auto">
+                <div id="chat-display" class="h-80 flex flex-col space-y-2 overflow-y-auto p-4 bg-[#0a192f] rounded-lg mb-4 border border-slate-700">
+                    <div class="chat-bubble gemini-bubble">Hallo! Ich bin Ognjens digitaler Assistent. Stell mir gerne eine Beispielfrage, die ein Kunde von StudyCheck haben könnte.</div>
+                </div>
+                <div id="loader" class="hidden"></div>
+                <form id="chat-form" class="flex gap-4">
+                    <input type="text" id="chat-input" placeholder="...oder teste mich mit deiner eigenen Frage." class="flex-grow p-3 bg-slate-800 text-slate-300 border border-slate-700 rounded-lg focus:ring-2 focus:ring-accent focus:outline-none transition">
+                    <button type="submit" id="chat-submit" class="bg-accent text-[#0a192f] font-bold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-all disabled:bg-slate-600">Senden</button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="text-center py-8 border-t border-slate-800">
+            <p class="text-slate-400">Ich bin überzeugt, dass ich mit meiner Erfahrung und meinem analytischen Blick einen wertvollen Beitrag leisten kann.</p>
+            <p class="mt-2 font-semibold text-slate-200">Ich freue mich auf ein persönliches Kennenlernen!</p>
+             <p class="mt-8 text-sm text-slate-500">&copy; 2025 Ognjen Lukajic | Erstellt für StudyCheck</p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('kompetenzenChart').getContext('2d');
+            
+            const labels = [
+                ['Strukturiert &', 'Verantwortungsbewusst'],
+                ['Exzellente', 'Kommunikation'],
+                ['Feedback als', 'Chance sehen'],
+                ['Mitdenken &', 'wirklich helfen'],
+                ['Prozesse hinterfragen', '& verbessern']
+            ];
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Anforderung erfüllt',
+                    data: [5, 5, 5, 5, 5],
+                    fill: true,
+                    backgroundColor: 'rgba(100, 255, 218, 0.2)',
+                    borderColor: 'rgba(100, 255, 218, 1)',
+                    pointBackgroundColor: 'rgba(100, 255, 218, 1)',
+                    pointBorderColor: '#0a192f',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(100, 255, 218, 1)'
+                }]
+            };
+
+            const chartOptions = {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(203, 213, 225, 0.2)'
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 5,
+                        grid: {
+                            color: 'rgba(203, 213, 225, 0.2)'
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 13,
+                                weight: '500'
+                            },
+                            color: '#ccd6f6'
+                        },
+                        ticks: {
+                           display: false,
+                           stepSize: 1
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#112240',
+                        titleColor: '#ccd6f6',
+                        bodyColor: '#ccd6f6',
+                        callbacks: {
+                           title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            },
+                            label: function(context) {
+                                return 'Anforderung wird voll und ganz erfüllt.';
+                            }
+                        }
+                    }
+                }
+            };
+            
+            const centerTextPlugin = {
+                id: 'centerText',
+                afterDraw: (chart) => {
+                    const ctx = chart.ctx;
+                    const centerY = chart.scales.r.yCenter;
+                    const centerX = chart.scales.r.xCenter;
+                    
+                    ctx.save();
+                    ctx.font = 'bold 48px Inter';
+                    ctx.fillStyle = 'rgba(100, 255, 218, 0.8)';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('ICH', centerX, centerY);
+                    ctx.restore();
+                }
+            };
+
+            new Chart(ctx, {
+                type: 'radar',
+                data: data,
+                options: chartOptions,
+                plugins: [centerTextPlugin]
+            });
+
+            const chatForm = document.getElementById('chat-form');
+            const chatInput = document.getElementById('chat-input');
+            const chatDisplay = document.getElementById('chat-display');
+            const chatSubmit = document.getElementById('chat-submit');
+            const loader = document.getElementById('loader');
+
+            const appendMessage = (message, sender) => {
+                const bubble = document.createElement('div');
+                bubble.classList.add('chat-bubble', sender === 'user' ? 'user-bubble' : 'gemini-bubble');
+                bubble.textContent = message;
+                chatDisplay.appendChild(bubble);
+                chatDisplay.scrollTop = chatDisplay.scrollHeight;
+            };
+
+            chatForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const userInput = chatInput.value.trim();
+                if (!userInput) return;
+
+                appendMessage(userInput, 'user');
+                chatInput.value = '';
+                chatSubmit.disabled = true;
+                loader.classList.remove('hidden');
+                loader.classList.add('loader');
+
+                try {
+                    const systemPrompt = "You are acting as Ognjen Lukajic, a highly skilled and empathetic Customer Care Manager candidate for StudyCheck. Your personality is a unique blend: you have the structured, process-oriented mind of a software developer and the warm, solution-focused communication style of a seasoned customer service expert. You are passionate about genuinely helping students and improving the processes to do so.";
+                    const userQuery = `The recruiter, Sandra, wants to see how you would handle a customer query. Here is the query she has provided: \"${userInput}\". Please draft an ideal response to the customer. The response should be helpful, clear, and reflect your unique developer/communicator personality. Address the customer directly using the informal German 'Du' form, and keep the response concise and friendly.`;
+                    
+                    const apiKey = "";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                    const payload = {
+                        contents: [{ parts: [{ text: userQuery }] }],
+                        systemInstruction: {
+                            parts: [{ text: systemPrompt }]
+                        },
+                    };
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API error: ${response.statusText}`);
+                    }
+
+                    const result = await response.json();
+                    const geminiResponse = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                    if (geminiResponse) {
+                        appendMessage(geminiResponse, 'gemini');
+                    } else {
+                        appendMessage('Entschuldigung, ich konnte keine Antwort generieren. Bitte versuch es erneut.', 'gemini');
+                    }
+
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    appendMessage('Ein Fehler ist aufgetreten. Bitte überprüf die Browser-Konsole und versuch es später erneut.', 'gemini');
+                } finally {
+                    chatSubmit.disabled = false;
+                    loader.classList.add('hidden');
+                    loader.classList.remove('loader');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
