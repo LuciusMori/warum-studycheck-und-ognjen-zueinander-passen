@@ -184,7 +184,7 @@ Du fragst dich also: Wozu dann noch StudyCheck?
 
 Stell es dir so vor: Eine KI kann dir eine Zusammenfassung von *Fakten* und öffentlich zugänglichen Informationen liefern. StudyCheck geht einen entscheidenden Schritt weiter und liefert dir nicht nur die nackten Fakten, sondern vor allem die *authentische Perspektive* von Studierenden, die aktuell oder kürzlich an den Unis waren. Wir sammeln und moderieren echte Erfahrungsberichte, die dir Einblicke in den Alltag geben, die keine KI (authentisch) generieren kann. Das sind Bewertungen zur Qualität der Lehre im Alltag (die echte Menschen hautnah erlebt haben), zum Campusleben (aus eigener Sicht der Studierenden), zur Unterstützung durch Dozenten, zur Mensa und vielem mehr – Kriterien, die nur Studierende wirklich beurteilen können.
 
-Diese individuellen, menschlichen Einblicke sind es, die deine Wahl wirklich fundiert machen und dir ein Gefühl dafür geben, ob eine Uni wirklich zu dir passt, nicht nur auf dem Papier. Sieh StudyCheck also nicht als "Workaround", sondern als die entscheidende Brücke zwischen den objektiven Infos, die dir KI liefert, und der subjektiven Realität, die du als Studierender erleben wirst.
+Diese individuellen, menschlichen Einblicke sind es, die deine Wahl wirklich fundiert machen und dir ein Gefühl dafür geben, ob eine Uni wirklich zu dir passt - und das nicht nur auf dem Papier. Sieh StudyCheck also nicht als "Workaround", sondern als die entscheidende Brücke zwischen den objektiven Infos, die dir KI liefert, und der subjektiven Realität, die du als Studierender erleben wirst.
 
 Es ist die menschliche Komponente, die das Bild komplett macht und dir hilft, die perfekte Wahl zu treffen.
 
