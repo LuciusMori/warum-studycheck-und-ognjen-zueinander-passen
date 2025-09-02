@@ -54,8 +54,9 @@ function App() {
       </section>
 
       {/* Developer-Communicator */}
-      <section style={{ marginBottom: '6rem', display: 'grid', gridTemplateColumns: '3fr 2fr', gap: '2rem', alignItems: 'center', padding: '2rem', borderRadius: '0.5rem', backgroundColor: '#112240' }}>
-        <div style={{ paddingRight: '2rem' }}>
+      <section style={{ marginBottom: '6rem', padding: '2rem', borderRadius: '0.5rem', backgroundColor: '#112240' }}>
+        <div className="developer-communicator-grid">
+          <div className="developer-communicator-text" style={{ paddingRight: '2rem' }}>
           <h3 style={{ fontSize: '2rem', fontWeight: '700', color: '#e2e8f0', marginBottom: '1rem' }}>
             Der Kern: Zwei Welten, ein Profil
           </h3>
@@ -77,8 +78,8 @@ function App() {
               </p>
             </div>
           </div>
-        </div>
-        <div style={{ display: 'grid', gap: '1.5rem', textAlign: 'center' }}>
+          </div>
+          <div className="developer-communicator-stats" style={{ display: 'grid', gap: '1.5rem', textAlign: 'center' }}>
           <div style={{ backgroundColor: '#0a192f', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid #475569' }}>
             <span style={{ fontSize: '4rem', fontWeight: '800', color: '#64ffda' }}>15</span>
             <p style={{ fontWeight: '600', color: '#cbd5e1', marginTop: '0.5rem' }}>Jahre Erfahrung im Kundendienst</p>
@@ -86,6 +87,7 @@ function App() {
           <div style={{ backgroundColor: '#0a192f', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid #475569' }}>
             <span style={{ fontSize: '4rem', fontWeight: '800', color: '#64ffda' }}>100%</span>
             <p style={{ fontWeight: '600', color: '#cbd5e1', marginTop: '0.5rem' }}>Leidenschaft für Prozessoptimierung</p>
+          </div>
           </div>
         </div>
       </section>
